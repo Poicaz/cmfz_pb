@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.baizhi.dao.First_PageDao">
+    <!--轮播图-->
+    <select id="header" resultType="Banner">
+        select ID,TITLE,IMG,CREATE_DATE,STATUS from banner
+    </select>
+    <!--专辑-->
+    <select id="album" resultType="Album">
+        select ID,TITLE,IMG,SCORE,AUTHOR,BROADCASTER,COUNT,BRIEF,CREATE_DATE,STATUS from album
+    </select>
+    <!--文章-->
+    <select id="article" resultType="Article">
+        select ID,TITLE,AUTHOR,CONTENT,GURU_ID,CREATE_DATE,STATUS from article
+    </select>
+<!--章节-->
+    <select id="wen" resultType="Chapter">
+        select ID,TITLE,ALBUM_ID,SIZE,DURATION,SRC,STATUS from chapter
+    </select>
+</mapper>

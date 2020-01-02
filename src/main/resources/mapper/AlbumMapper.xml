@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.baizhi.dao.AlbumDao">
+    <!--分页查询-->
+    <select id="selectPage" resultType="Album">
+        select ID,TITLE,IMG,SCORE,AUTHOR,BROADCASTER,COUNT,BRIEF,CREATE_DATE,STATUS from album limit #{start},#{rows}
+    </select>
+    <!--查询数量-->
+    <select id="selectCount" resultType="java.lang.Integer">
+        select COUNT(ID) from album
+    </select>
+</mapper>

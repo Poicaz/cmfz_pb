@@ -1,0 +1,38 @@
+server:
+  port: 80   #tomcat端口号
+  servlet:
+    context-path: /cmfz  #项目名
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #类型
+    driver-class-name: com.mysql.jdbc.Driver   #加载驱动
+    url: jdbc:mysql://localhost:3306/cmfz   #连接mysql
+    username: root  #用户名
+    password: 1234  #密码
+  http:
+    encoding:
+      charset: UTF-8  #编码格式
+      force: true     #是否强制执行
+      force-request: true #是否强制执行请求编码
+      force-response: true #是否强制执行响应编码
+#      视图解析器
+  mvc:
+    view:
+      prefix: /  #前缀
+      suffix: .jsp  #后缀
+    date-format: yyyy-MM-dd
+  servlet:
+    multipart:
+      max-file-size: 10MB  #单个文件上传大小
+      max-request-size: 100MB  #多个文件上传大小
+  jackson:
+    date-format: yyyy-MM-dd #日期格式
+    time-zone: GMT+8  #时区  东八区
+#      文件上传
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml   #扫描mapper文件
+  type-aliases-package: com.baizhi.entity  #实体类别名
+logging:
+  level:
+    root: info
+    com.baizhi.dao: debug

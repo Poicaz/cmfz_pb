@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.baizhi.dao.BannerDao">
+    <!--查询所有-->
+    <select id="selectAll" resultType="Banner">
+        select ID,TITLE,IMG,CREATE_DATE,STATUS from banner
+    </select>
+    <!--添加-->
+    <insert id="insert">
+        insert into banner(ID, TITLE, IMG, CREATE_DATE, STATUS) values (#{id},#{title},#{img},#{create_date},#{status})
+    </insert>
+    <!--修改-->
+    <update id="update">
+        update banner
+        <set>
+            <if test="title!=null">title=#{title},</if>
+            <if test="img!=null">img=#{img},</if>
+            <if test="create_date!=null">create_date=#{create_date},</if>
+            <if test="status!=null">status=#{status}</if>
+        </set>
+        where id=#{id}
+    </update>
+    <!--批量删除-->
+    <delete id="delete">
+        delete from banner where id in #{id}
+    </delete>
+    <!--分页查询-->
+    <select id="selectByPage" resultType="Banner">
+        select ID,TITLE,IMG,CREATE_DATE,STATUS from banner limit #{start},#{rows}
+    </select>
+    <!--查询总数-->
+    <select id="selectCount" resultType="java.lang.Integer">
+        select COUNT(ID) from banner
+    </select>
+    <!--批量删除-->
+    <delete id="PlDelete">
+        delete from banner where ID in
+        <foreach collection="array" open="(" item="lisa" separator="," close=")">
+            #{lisa}
+        </foreach>
+    </delete>
+</mapper>
